@@ -1,13 +1,13 @@
 $(document).ready(function() {
 	var WorkoutLog = (function($, undefined) {
-		var API_BASE = "http://localhost:3000/api/";
+		var API_BASE = "//workoutapi-name-tararee.herokuapp.com/";
 
 		var setAuthHeader = function(sessionToken) {
 			window.localStorage.setItem("sessionToken", sessionToken);
 			
 			$.ajaxSetup({
 				"headers": {
-					"Authorization": sessionToken	
+					"Authorization": sessionToken
 				}
 			});
 		};
