@@ -1,7 +1,9 @@
 $(document).ready(function() {
 	var WorkoutLog = (function($, undefined) {
-		var API_BASE = "//workoutapi-name-tararee.herokuapp.com/api/";
-
+		// var API_BASE = location.hostname === "localhost//workoutapi-name-tararee.herokuapp.com/api/";
+		var API_BASE = location.hostname === "localhost" ?
+			"//localhost:3000/api/" : 
+			"//workoutapi-name-tararee.herokuapp.com/api/";
 		var setAuthHeader = function(sessionToken) {
 			window.localStorage.setItem("sessionToken", sessionToken);
 			
