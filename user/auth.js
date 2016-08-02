@@ -4,6 +4,7 @@ $(function() {
 			WorkoutLog.setAuthHeader(sessionToken);
 			WorkoutLog.definition.fetchAll();
 			WorkoutLog.log.fetchAll();
+			WorkoutLog.fetchAllFeeds(); 
 			$(".disabled").removeClass("disabled");
 			$("#loginout").text("Logout");
 		},

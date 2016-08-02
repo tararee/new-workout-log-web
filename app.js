@@ -12,8 +12,13 @@ $(document).ready(function() {
 					"Authorization": sessionToken
 				}
 			});
+			$.ajax({
+				type: "GET",
+				url: API_BASE + "login"
+			}).then(function(data){
+				WorkoutLog.username = data;
+			});
 		};
-joey is silly
 		return {
 			API_BASE: API_BASE,
 			setAuthHeader: setAuthHeader
@@ -38,6 +43,9 @@ joey is silly
 		if (target === "#history") {
 			WorkoutLog.log.setHistory();
 		}
+		if(target === "#feed"){
+			WorkoutLog.setFeed();
+}
 	});
 
   // bind enter key
@@ -59,22 +67,11 @@ joey is silly
 
 	window.WorkoutLog = WorkoutLog;
 
-
-	
-		// $("#testAPI").on("click", function() {
-	// 	console.log("its working");
-
-	// 	var test = $.ajax({
-	// 		type: "GET",
-	// 		url: "http://localhost:3000/api/test"
-	// 	});
-
-	// 	test.done(function(data) {
-	// 		console.log(data);
-	// 	});
-
-	// 	test.fail(function() {
-	// 		console.log("oh noes!!!");
-	// 	});
-	// });
+	WorkoutLog.socket = io.connect("http://localhost:3000");
+	WorkoutLog.socket.on("new log", function(data){
+		WorkoutLog.addFeedItem(data);
+	});
+	WorkoutLog.socket.on("chat-message", function(data){
+		WorkoutLog.addFeedItem(data);
+	});
 });

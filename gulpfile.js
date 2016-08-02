@@ -6,6 +6,7 @@ var watch = require('gulp-watch');
 
 var javascriptFiles = [
 	'./app.js',
+	'./feed/feed.js',
 	'./workouts/define.js',
 	'./workouts/log.js',
 	'./user/auth.js'
