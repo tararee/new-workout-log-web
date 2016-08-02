@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Workout Log</title>
-  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="/styles/paper.bootstrap.min.css" rel="stylesheet" >
 </head>
 
 <body>
@@ -80,9 +81,9 @@
       <div class="modal-body">
         <div class="alert alert-danger" style="display: none;" role="alert" id="li_error"></div>
         <label for="li_username">Username:</label>
-        <input id="li_username" />
+        <input class="form-control" id="li_username" />
         <label for="li_password">Password:</label>
-        <input type="password" id="li_password" />
+        <input class="form-control" type="password" id="li_password" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -101,9 +102,9 @@
       <div class="modal-body">
       <div class="alert alert-danger" role="alert" style="display:none;" id="su_error"></div>
         <label for="su_username">Username:</label>
-        <input id="su_username" />
+        <input class="form-control" id="su_username" />
         <label for="su_password">Password:</label>
-        <input type="password" id="su_password" />
+        <input class="form-control" type="password" id="su_password" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -115,11 +116,14 @@
 </div>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//localhost:3000/socket.io/socket.io.js"></script>
     <script src="./dist/bundle.js"></script>
-<!--     <script type="text/javascript" src="./app.js"></script>
-    <script src="./workouts/define.js"></script>
-    <script src="./workouts/log.js"></script>
-    <script src="./user/auth.js"></script> -->
+    <script>
+      var socket = io.connect("http://localhost:3000");
+      socket.on("new log", function(data) {
+        console.log(data);
+      });
+    </script>
 </body>
 
 </html>
